@@ -1,0 +1,48 @@
+{
+  "channels": [
+    "L_HH",
+    "L_VV",
+    "S_HH",
+    "S_VV"
+  ],
+  "grid": {
+    "roughness_sampling": "geometric",
+    "roughness_min_m": 0.00025,
+    "roughness_max_m": 0.001,
+    "roughness_count": 41,
+    "salinity_sampling": "linear",
+    "salinity_min_ppt": 0.5,
+    "salinity_max_ppt": 10.5625,
+    "salinity_count": 41,
+    "valid_states": 1681,
+    "total_states": 1681
+  },
+  "truth": {
+    "roughness_rms_m": 0.00075,
+    "salinity_ppt": 4.0,
+    "ice_thickness_m": 1.5
+  },
+  "optimizer_retrieval": {
+    "roughness_rms_m": 0.0007988352310427703,
+    "salinity_ppt": 2.293147251265849,
+    "ice_thickness_m": 1.5
+  },
+  "exact_truth_cost": {
+    "cost_clean": 0.0,
+    "cost_noisy": 1.311129211467169
+  },
+  "exact_optimizer_retrieval_cost": {
+    "cost_clean": 0.08245491463918259,
+    "cost_noisy": 0.8955733906422585
+  },
+  "clean_grid_minimum": {
+    "roughness_rms_m": 0.0007578582832551987,
+    "salinity_ppt": 4.0218750000000005,
+    "cost": 0.0028599232640137816
+  },
+  "noisy_grid_minimum": {
+    "roughness_rms_m": 0.0008122523963562357,
+    "salinity_ppt": 2.2609375000000003,
+    "cost": 0.9029761690044673
+  }
+}

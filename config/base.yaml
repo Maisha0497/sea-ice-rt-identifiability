@@ -1,0 +1,65 @@
+sensor:
+  incidence_angle_deg: 35.0
+  frequencies_hz:
+    L: 1.257e9
+    S: 3.200e9
+
+model:
+  emmodel: iba
+  rtsolver: dort
+  ice_type: firstyear
+  microstructure_model: exponential
+  surface_model: iem_fung92
+  surface_autocorrelation: exponential
+  brine_inclusion_shape: spheres
+
+fixed_scene:
+  temperature_k: 263.15
+  ice_corr_length_m: 0.0005
+  surface_corr_length_m: 0.030
+  water_temperature_k: 271.35
+  water_salinity_ppt: 32.0
+
+baseline_state:
+  roughness_rms_m: 0.001
+  salinity_ppt: 5.0
+  ice_thickness_m: 1.50
+
+inversion:
+  parameters:
+    - roughness_rms_m
+    - salinity_ppt
+
+  bounds:
+    roughness_rms_m: [0.00025, 0.001]
+    salinity_ppt: [0.5, 10.5625]
+    ice_thickness_m: [0.20, 4.00]
+
+  log_step: 0.02
+  random_seed: 42
+  multistart_count: 8
+
+# PLACEHOLDERS: replace with measured/estimated channel uncertainty.
+noise_std_db:
+  L_HH: 1.0
+  L_HV: 1.0
+  L_VV: 1.0
+  S_HH: 1.0
+  S_HV: 1.0
+  S_VV: 1.0
+
+sweeps:
+  roughness_rms_m:
+    start: 0.00025
+    stop: 0.001
+    count: 16
+  salinity_ppt:
+    start: 0.5
+    stop: 12.0
+    count: 25
+  ice_thickness_m:
+    start: 0.2
+    stop: 3.0
+    count: 25
+
+

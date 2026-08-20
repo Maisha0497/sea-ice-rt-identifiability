@@ -1,0 +1,19 @@
+{
+  "parameters": [
+    "roughness_rms_m",
+    "salinity_ppt"
+  ],
+  "channels": [
+    "L_HH",
+    "L_HV",
+    "L_VV",
+    "S_HH",
+    "S_HV",
+    "S_VV"
+  ],
+  "singular_values": [
+    9.250335159241828,
+    2.7318011869258902
+  ],
+  "condition_number": 3.3861670474092143
+}

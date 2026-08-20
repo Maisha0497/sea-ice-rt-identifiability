@@ -1,0 +1,14 @@
+# Core numerical / plotting stack
+numpy
+pandas
+scipy
+matplotlib
+PyYAML
+
+# Needed only for UAVSAR raster/ROI observation preparation (experiments 07-08
+# and prepare_real_observations.py). Keeping them here makes the full workflow
+# explicit.
+rasterio
+geopandas
+
+# SMRT is installed separately; see README.md.

@@ -1,0 +1,45 @@
+{
+  "channels": [
+    "L_HH",
+    "L_VV",
+    "S_HH",
+    "S_VV"
+  ],
+  "noise_std_db": {
+    "L_HH": 1.0,
+    "L_VV": 1.0,
+    "S_HH": 1.0,
+    "S_VV": 1.0
+  },
+  "truth": {
+    "roughness_rms_m": 0.00075,
+    "salinity_ppt": 4.0,
+    "ice_thickness_m": 1.5
+  },
+  "clean_observation_db": {
+    "L_HH": -38.80450745355867,
+    "L_VV": -37.83220881563721,
+    "S_HH": -28.859589196201014,
+    "S_VV": -27.844334533707514
+  },
+  "noisy_observation_db": {
+    "L_HH": -38.49979037380424,
+    "L_VV": -38.872192921877705,
+    "S_HH": -28.10913800039456,
+    "S_VV": -26.9037698173163
+  },
+  "best_retrieval": {
+    "roughness_rms_m": 0.0007988352310427703,
+    "salinity_ppt": 2.293147251265849,
+    "ice_thickness_m": 1.5
+  },
+  "best_cost": 0.8955733906422585,
+  "best_success": true,
+  "best_message": "`xtol` termination condition is satisfied.",
+  "best_whitened_residual": {
+    "L_HH": -0.3709541227826918,
+    "L_VV": 0.9024030972905095,
+    "S_HH": -0.3912957323180457,
+    "S_VV": -0.8283091934448272
+  }
+}
