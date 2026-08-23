@@ -29,7 +29,7 @@ flowchart TD
     K --> L["Add a simple fresh/dry one-layer snow model"]
     L --> M["No improvement"]
 
-    M --> N["PhD direction:<br/>physically constrained + identifiable<br/>multi-frequency RT inversion"]
+    M --> N["Research direction:<br/>physically constrained + identifiable<br/>multi-frequency RT inversion"]
 ```
 
 ### Main numerical progression
