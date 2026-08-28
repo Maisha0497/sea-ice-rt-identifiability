@@ -4,6 +4,25 @@
 
 > **Status:** pilot / feasibility study. This repository does **not** claim a validated physical retrieval or a completed real-data PINN.
 
+### Relationship to MSc research
+
+The L- and S-band UAVSAR observations used in the real-data experiments are
+derived from the dataset analyzed in my MSc thesis at McGill University:
+
+> *Dual-Frequency Polarimetric SAR Analysis and Physics-Constrained Neural Networks
+> for Arctic Sea Ice Classification: A NISAR Baseline Study.*
+
+The underlying dual-frequency polarimetric analysis is also the subject of the
+first-author manuscript:
+
+> Mahboob, M., Mahmud, M., Nandan, V., Howell, S.E.L., Brady, M., Cabaj, A.,
+> and Dewan, A. “Discrimination of Arctic Sea Ice Types From L- and S-Band
+> Fully Polarimetric UAVSAR: A NISAR Baseline Study.”
+> *IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing*.
+> **Under review**, 2026. Manuscript ID: JSTARS-2026-04639.
+
+The radiative-transfer, forward-model adequacy, identifiability, and constrained-inversion experiments documented in this repository are subsequent exploratory analyses building on those observations.
+
 ---
 
 ## At a glance
@@ -216,6 +235,9 @@ The synthetic test also shows that the inversion machinery itself can work when 
 
 `06_forward_model_existence_test.py`, `06b_expanded_bounds_existence_test.py`, and `06c_channel_subset_reachability.py`
 
+The analysis then moved from synthetic experiments to derived L- and S-band
+UAVSAR observations originating from the MSc thesis dataset described above.
+
 The next question was:
 
 \[
@@ -389,7 +411,17 @@ Suggested reading order:
 
 ## Data and provenance
 
-The real-data experiments use **derived L/S-band SAR observations originating from the UAVSAR data used in the associated MSc sea-ice research**.
+The real-data experiments use **derived L- and S-band SAR observations originating
+from the UAVSAR dataset analyzed in my MSc thesis at McGill University**,
+*Dual-Frequency Polarimetric SAR Analysis and Physics-Constrained Neural Networks
+for Arctic Sea Ice Classification: A NISAR Baseline Study*.
+
+The underlying dual-frequency polarimetric analysis is also described in the
+associated first-author manuscript,
+*“Discrimination of Arctic Sea Ice Types From L- and S-Band Fully Polarimetric
+UAVSAR: A NISAR Baseline Study,”* currently under review at
+*IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing*
+(JSTARS-2026-04639).
 
 This public repository does **not** redistribute:
 
@@ -398,9 +430,15 @@ This public repository does **not** redistribute:
 - ROI shapefiles;
 - per-pixel MSc thesis datasets.
 
-Only selected derived summary values, plots, and processing/model scripts needed to document the pilot analysis are included.
+Only selected derived observation summaries, plots, and processing/model scripts
+needed to document the exploratory radiative-transfer analysis are included.
 
-Before reuse or redistribution of the underlying SAR-derived results, appropriate data ownership, collaboration and publication considerations should be respected.
+The SMRT forward-modelling, reachability, sensitivity, identifiability, and
+constrained-inversion experiments presented here are subsequent exploratory analyses
+and should not be interpreted as results of the associated submitted manuscript unless explicitly stated.
+
+Before reuse or redistribution of the underlying SAR-derived observations or results,
+appropriate data ownership, collaboration, and publication considerations should be respected.
 
 Set the external data root before running the real-observation preparation scripts:
 
