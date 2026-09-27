@@ -69,21 +69,21 @@ The central result is therefore not simply *“SMRT fits”* or *“SMRT fails�
 
 The eventual goal is an inverse problem:
 
-\[
-\text{SAR observations } y \rightarrow \text{estimated physical state } \hat m.
-\]
+```math
+\text{SAR observations } y \;\longrightarrow\; \text{estimated physical state } \hat{m}.
+```
 
 A future physics-constrained neural network could learn an inverse map
 
-\[
-f_\theta(y)\rightarrow \hat m,
-\]
+```math
+f_\theta(y) \rightarrow \hat{m},
+```
 
 while the radiative-transfer model checks whether
 
-\[
-G(\hat m)\approx y.
-\]
+```math
+G(\hat{m}) \approx y.
+```
 
 But that inverse model is only meaningful if the forward model itself can represent the observations over a physically defensible parameter domain.
 
@@ -123,9 +123,9 @@ The baseline experiments use:
 
 The first step was simply to verify that a reproducible active L/S-band sea-ice forward simulation could be generated:
 
-\[
-m \rightarrow G(m) \rightarrow \sigma^0.
-\]
+```math
+m \;\rightarrow\; G(m) \;\rightarrow\; \sigma^0.
+```
 
 This establishes the forward-model machinery before any inversion is attempted.
 
@@ -165,21 +165,21 @@ These experiments establish that different physical parameters do not influence 
 
 Around a reference state,
 
-\[
-\Delta y \approx J\Delta m,
-\]
+```math
+\Delta y \approx J\,\Delta m,
+```
 
 where the Jacobian contains local sensitivities
 
-\[
-J_{ij}=\frac{\partial y_i}{\partial m_j}.
-\]
+```math
+J_{ij} = \frac{\partial y_i}{\partial m_j}.
+```
 
 The singular-value decomposition
 
-\[
-J=USV^T
-\]
+```math
+J = U S V^{T}
+```
 
 is then used to diagnose parameter combinations that are strongly visible or weakly visible to SAR.
 
@@ -223,9 +223,8 @@ The observation reconstruction remained good even though the retrieved salinity 
 
 This is an important warning:
 
-\[
-\boxed{\text{good SAR reconstruction} \neq \text{guaranteed true physical parameters}}
-\]
+> [!IMPORTANT]
+> **Good SAR reconstruction ≠ guaranteed true physical parameters.**
 
 The synthetic test also shows that the inversion machinery itself can work when the observations genuinely come from the assumed forward model.
 
@@ -240,9 +239,9 @@ UAVSAR observations originating from the MSc thesis dataset described above.
 
 The next question was:
 
-\[
-\min_m \|G(m)-y_{\rm UAVSAR}\|.
-\]
+```math
+\min_{m} \; \lVert G(m) - y_{\mathrm{UAVSAR}} \rVert.
+```
 
 The initial bare-ice model could not reproduce much of the observed real-data space well. Expanding parameter bounds improved the result but did not remove the discrepancy.
 
