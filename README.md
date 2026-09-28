@@ -37,31 +37,26 @@ flowchart TD
     D --> E["Use SMRT multiyear-ice structure<br/>+ air porosity"]
     E --> F["Major improvement<br/>joint RMS ≈ 5–6 dB"]
 
-    F --> G["Separate surface correlation length<br/>from internal MYI microstructure length scale"]
-    G --> H["Very good mathematical reachability<br/>joint RMS ≈ 1–3 dB"]
-
-    H --> I["But broad parameters compensate<br/>→ fit is not automatically a physical retrieval"]
-
-    I --> J["Apply tighter physically motivated MYI bounds"]
-    J --> K["Joint RMS ≈ 3–4 dB<br/>remaining mismatch mainly L-band"]
-
-    K --> L["Add a simple fresh/dry one-layer snow model"]
-    L --> M["No improvement"]
-
-    M --> N["Research direction:<br/>physically constrained + identifiable<br/>multi-frequency RT inversion"]
+    F --> G["Separate surface / internal length scales"]
+    G --> H["Joint RMS ≈ 1–3 dB, but salinity hits 15 ppt ceiling<br/>or refinement never leaves the coarse grid"]
+    H --> I["Not a physical fit → apply physically plausible MYI bounds"]
+    I --> J["Joint RMS ≈ 3–4 dB; same corner solution in every bin<br/>(5 of 6 parameters at bounds)"]
+    J --> K["Diagnosis: model L−S contrast ≈ −13 dB vs observed ≈ −7 dB<br/>L underpredicted 3–6 dB, S overpredicted ≤ 3 dB"]
+    K --> L["Fine-grained dry snow: no improvement<br/>(expected: snow adds mainly at S band)"]
+    L --> M["Next: scattering with weaker frequency dependence<br/>(cm-scale roughness, larger inclusions) + identifiable inversion"]
 ```
 
 ### Main numerical progression
 
-| Stage | What changed? | Joint L+S RMS |
-|---|---|---:|
-| Incidence-aware MYI test with FYI structure | Baseline structural mismatch | **≈ 11–14 dB** |
-| Correct MYI structure | Multiyear ice + porosity | **≈ 5–6 dB** |
-| Separate surface and internal length scales | More physically distinct model freedom | **≈ 1–3 dB** |
-| Tighter MYI physical bounds | Reduced parameter compensation | **≈ 3–4 dB** |
-| Simple dry snow layer | One-layer fresh/dry snow added | **No improvement** |
+| Stage | What changed? | Joint L+S RMS | Interpretation |
+|---|---|---:|---|
+| Incidence-aware MYI, FYI structure | Baseline | ≈ 11–14 dB | Wrong structural model |
+| MYI structure + porosity | Structure | ≈ 5–6 dB | Structure matters most |
+| Separate surface / internal length scales | More freedom | ≈ 1–3 dB | **Not physical**: salinity at 15 ppt ceiling or unrefined grid point |
+| Physically plausible MYI bounds | Constrained | ≈ 3–4 dB | **Corner solution**: 5/6 parameters at bounds, identical in all bins |
+| One-layer fresh/dry snow | Added layer | 0.23–0.30 dB worse | Expected; snow adds scattering mainly at S band |
 
-The central result is therefore not simply *“SMRT fits”* or *“SMRT fails”*. The result is that **forward-model structure and parameter constraints strongly control reachability, and an excellent SAR fit can still be physically non-unique.**
+The central result is therefore not simply *“SMRT fits”* or *“SMRT fails”*. Forward-model structure and parameter constraints strongly control reachability, an excellent SAR fit can be physically implausible, and under physically plausible MYI bounds the model's **L−S frequency dependence is too steep by about 6 dB**.
 
 ---
 
@@ -266,7 +261,7 @@ The real-data preparation was rebuilt to:
 
 The large MYI mismatch still remained under the FYI structural model.
 
-![Incidence-aware MYI reachability](results/09_incidence_aware_reachability_MYI.png)
+Each bin pools pixels from a small number of ROIs; the number of ROIs per bin is not yet reported.
 
 A safe derivative-free refinement was also used to avoid invalid IEM trial states. It produced essentially no improvement over the coarse-grid optimum, confirming that the remaining discrepancy was not simply an optimizer failure.
 
@@ -301,7 +296,7 @@ The joint L+S RMS changed as follows:
 
 ---
 
-## 10. Separating surface and internal MYI length scales greatly improved reachability
+## 10. Separating surface and internal MYI length scales lowered the misfit, but not with a physical state
 
 `11_myi_length_scale_reachability.py`
 
@@ -312,9 +307,13 @@ Two physically different scales were allowed to vary independently:
 
 The joint L+S RMS fell to approximately **1.05–2.97 dB** across the four MYI incidence bins.
 
-However, some best-fitting states drove salinity, porosity, thickness or correlation lengths toward broad diagnostic limits.
-
-Therefore this experiment demonstrates **mathematical reachability and model flexibility**, not validated geophysical retrieval.
+However, these fits are not physical retrievals. In the 30–33° and 45–48° bins the
+optimizer drove salinity to its 15 ppt upper bound (implausible for MYI) and porosity
+to its 0.30 upper bound. In the 48–51° and 51–54° bins the refinement did not move
+from the coarse-grid starting point (salinity 0.5 ppt and thickness 6.0 m are the fixed
+coarse-grid values, which are also bounds). This experiment therefore shows that the model
+*can* reach the observations with enough freedom, not that it does so with a
+realistic state.
 
 ---
 
@@ -335,13 +334,30 @@ At the joint solutions:
 - S-band RMS remained approximately **0.76–2.66 dB**
 - L-band RMS remained approximately **4.27–5.65 dB**
 
-Several parameters again reached their allowed limits.
+In every incidence bin the joint L+S optimum is the **same state**: roughness 3 mm,
+porosity 0.30 and internal correlation length 0.8 mm at their upper bounds,
+salinity 1 ppt at its lower bound, thickness 3 m at its upper bound (only the surface
+correlation length, 15 mm, is interior). The local refinement did not improve on this
+coarse-grid point (`coarse-grid fallback`, 0 function evaluations, in all four bins).
+The reported 3.2–4.0 dB is therefore the model's closest approach from the
+high-scattering corner of the allowed domain, not an interior optimum.
 
-This is a central result:
+Residuals (model − observed, dB) and L−S contrast at the joint solution:
+
+| Bin | L-HH | L-VV | S-HH | S-VV | Obs L−S (HH) | Model L−S (HH) |
+|---|---:|---:|---:|---:|---:|---:|
+| 30–33° | −3.4 | −5.7 | +3.0 | +2.3 | −6.9 | −13.3 |
+| 45–48° | −3.9 | −4.6 | +1.8 | +1.5 | −7.2 | −13.0 |
+| 48–51° | −5.3 | −5.9 | +0.2 | +1.0 | −7.3 | −12.9 |
+| 51–54° | −4.1 | −5.2 | +0.6 | +1.3 | −8.1 | −12.8 |
+
+The problem is the **frequency dependence**, not a uniform L-band deficit.
+With mm-scale roughness, surface scattering at L band is weak (ks ≈ 0.08 for
+s = 3 mm), so the model has little L-band mechanism other than small-inclusion
+volume scattering, which falls off steeply with wavelength. The observations require
+a mechanism whose response falls off much less from S to L.
 
 > **A very good unconstrained SAR fit does not automatically imply that the retrieved physical state is identifiable or realistic.**
-
-The remaining mismatch is predominantly associated with L band.
 
 ---
 
@@ -361,6 +377,12 @@ No tested state improved L-band RMS by at least 0.5 dB while keeping the S-band 
 
 This does **not** imply that snow is unimportant. It only shows that this simple homogeneous fresh/dry representation is insufficient to explain the remaining mismatch.
 
+This outcome is consistent with expectation: fine-grained dry snow is a small-grain
+(Rayleigh-like) scatterer that is nearly transparent at L band, so any scattering it
+adds falls mainly at S band and cannot correct an L−S contrast that is already too
+steep. Note also that the snow was added to a fixed ice state lying at the parameter
+bounds; a joint re-optimization was not performed.
+
 ---
 
 # Current interpretation
@@ -369,17 +391,23 @@ The pilot now supports the following research question:
 
 > **How can multi-frequency SAR be inverted with a radiative-transfer model while maintaining physical plausibility, identifiability and uncertainty awareness, rather than obtaining good fits through parameter compensation?**
 
-Potential next physical questions include:
+## Proposed next experiments
 
-- snow stratigraphy;
-- saline or basal snow;
-- snow–ice interface physics;
-- deformation and heterogeneous MYI;
-- improved internal microstructure representation;
-- independent field constraints;
-- observation covariance and posterior uncertainty;
-- physically informed priors;
-- eventual physics-constrained inverse modelling / PINN.
+1. **Relax the roughness bound.** The 3 mm cap is a chosen bound, not the IEM validity
+   limit enforced in this code (ks < 3 and ks·kl < √εr, `src/forward_smrt.py`). At S band
+   that limit permits rms heights of roughly 1–3 cm for surface correlation lengths of
+   15–20 mm, and MYI hummock roughness is centimetre-scale or larger. Test whether the
+   L-band deficit and the L−S contrast close within IEM validity; if the solution
+   approaches the validity limit, compare against SMRT's extended-domain IEM
+   (`iem_fung92_brogioni10`) or its geometrical-optics interface (`geometrical_optics`),
+   both shipped with SMRT 1.7.
+2. **Larger / non-Rayleigh inclusions** in the MYI upper layer (bubble-size
+   distributions rather than a single exponential correlation length).
+3. **ROI-level fitting.** Fit each ROI at its own mean incidence angle, so bin-to-bin
+   consistency is not confounded with ROI identity.
+4. **Identifiability and uncertainty** of whatever state closes the gap (Jacobian/SVD
+   at the fitted state, posterior sampling), before any learned inverse model.
+5. Only then: a physics-constrained inverse model (PINN/KAN) for NISAR L/S.
 
 These are **future research directions**, not completed results in this repository.
 
@@ -473,7 +501,11 @@ This repository does **not** establish:
 - uniqueness of the full physical inverse problem;
 - a completed real-data PINN/KAN inversion;
 - validation of the snow representation against coincident field observations;
-- that the remaining L-band discrepancy is caused by any single missing physical process.
+- that the remaining L-band discrepancy is caused by any single missing physical process;
+- that the experiment-11 and experiment-12 optima are interior optima (they lie at or
+  near parameter bounds or on the coarse grid);
+- independence of the incidence bins: each bin pools pixels from a small number of
+  ROIs, so bins are not independent replicates of an angular effect.
 
 The defensible conclusion is narrower:
 
