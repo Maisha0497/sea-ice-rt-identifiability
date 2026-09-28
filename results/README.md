@@ -33,3 +33,7 @@ The CSV/JSON outputs are diagnostic model results, not validated geophysical ret
 ## Observation-provenance note
 
 The real-data workflow evolved during the audit. The 06/06b summaries predate the switch to linear-power class averaging. The 06c summary uses the later power-mean observation summary but still uses the empirically incidence-normalized raster products. Experiments 07-08 then rebuild the observations without that empirical normalization and bin them by actual incidence angle; experiments 09b-13 use that later path. These stages should not be mixed as if they were one homogeneous observation product.
+
+## Pixel counts
+
+Pixel counts here (e.g. `n_observation_pixels`) are on the Level-2 grid within ROI envelopes and are not comparable to sample counts in the associated manuscript.

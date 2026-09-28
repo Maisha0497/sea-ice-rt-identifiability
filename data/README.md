@@ -2,6 +2,16 @@
 
 Raw UAVSAR data, processed GeoTIFFs and ROI shapefiles are not redistributed in this repository.
 
+## Naming conventions
+
+- **`ASAR`** is only the name of the local project folder that holds the data
+  (and of the `RTE_PINN_ASAR_ROOT` variable). It is kept for continuity with the
+  original directory layout. All data are **UAVSAR** L- and S-band joint
+  acquisitions, as described in the associated manuscript.
+- **Class labels:** `TI` in scripts and shapefile names corresponds to
+  **first-year ice (FYI)** in the associated manuscript. `MYI` and `NI` match the
+  manuscript labels. `ENVELOPE_*` shapefiles are the ROI envelopes described there.
+
 ## External root
 
 Set:
