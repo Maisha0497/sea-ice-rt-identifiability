@@ -19,7 +19,7 @@ first-author manuscript:
 > and Dewan, A. “Discrimination of Arctic Sea Ice Types From L- and S-Band
 > Fully Polarimetric UAVSAR: A NISAR Baseline Study.”
 > *IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing*.
-> **Under review**, 2026. Manuscript ID: JSTARS-2026-04639.
+> **Accepted for publication**, November 2026.
 
 The radiative-transfer, forward-model adequacy, identifiability, and constrained-inversion experiments documented in this repository are subsequent exploratory analyses building on those observations.
 
@@ -446,9 +446,9 @@ for Arctic Sea Ice Classification: A NISAR Baseline Study*.
 The underlying dual-frequency polarimetric analysis is also described in the
 associated first-author manuscript,
 *“Discrimination of Arctic Sea Ice Types From L- and S-Band Fully Polarimetric
-UAVSAR: A NISAR Baseline Study,”* currently under review at
+UAVSAR: A NISAR Baseline Study,”* accepted for publication in
 *IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing*
-(JSTARS-2026-04639).
+(November 2026).
 
 This public repository does **not** redistribute:
 
@@ -462,7 +462,7 @@ needed to document the exploratory radiative-transfer analysis are included.
 
 The SMRT forward-modelling, reachability, sensitivity, identifiability, and
 constrained-inversion experiments presented here are subsequent exploratory analyses
-and should not be interpreted as results of the associated submitted manuscript unless explicitly stated.
+and should not be interpreted as results of the associated manuscript unless explicitly stated.
 
 Before reuse or redistribution of the underlying SAR-derived observations or results,
 appropriate data ownership, collaboration, and publication considerations should be respected.
