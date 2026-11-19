@@ -1,5 +1,7 @@
 # Sea-ice radiative-transfer identifiability with L/S-band SAR
 
+[![Related IEEE JSTARS paper](https://img.shields.io/badge/Related%20paper-IEEE%20JSTARS-00629B)](https://doi.org/10.1109/JSTARS.2026.3754265)
+
 **Preliminary SMRT study of forward-model adequacy, parameter identifiability, and the feasibility of a later physics-constrained inverse model for sea ice.**
 
 > **Status:** pilot / feasibility study. This repository does **not** claim a validated physical retrieval or a completed real-data PINN.
@@ -12,14 +14,15 @@ derived from the dataset analyzed in my MSc thesis at McGill University:
 > *Dual-Frequency Polarimetric SAR Analysis and Physics-Constrained Neural Networks
 > for Arctic Sea Ice Classification: A NISAR Baseline Study.*
 
-The underlying dual-frequency polarimetric analysis is also the subject of the
-first-author manuscript:
+The underlying dual-frequency polarimetric analysis forms the first part of my
+MSc thesis research and has been published as a first-author paper in IEEE JSTARS:
 
 > Mahboob, M., Mahmud, M., Nandan, V., Howell, S.E.L., Brady, M., Cabaj, A.,
 > and Dewan, A. “Discrimination of Arctic Sea Ice Types From L- and S-Band
 > Fully Polarimetric UAVSAR: A NISAR Baseline Study.”
 > *IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing*.
-> **Accepted for publication**, November 2026.
+> **Published online (Early Access), November 2026.**  
+> DOI: [10.1109/JSTARS.2026.3754265](https://doi.org/10.1109/JSTARS.2026.3754265).
 
 The radiative-transfer, forward-model adequacy, identifiability, and constrained-inversion experiments documented in this repository are subsequent exploratory analyses building on those observations.
 
@@ -443,12 +446,11 @@ from the UAVSAR dataset analyzed in my MSc thesis at McGill University**,
 *Dual-Frequency Polarimetric SAR Analysis and Physics-Constrained Neural Networks
 for Arctic Sea Ice Classification: A NISAR Baseline Study*.
 
-The underlying dual-frequency polarimetric analysis is also described in the
-associated first-author manuscript,
-*“Discrimination of Arctic Sea Ice Types From L- and S-Band Fully Polarimetric
-UAVSAR: A NISAR Baseline Study,”* accepted for publication in
-*IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing*
-(November 2026).
+The underlying dual-frequency polarimetric analysis is described in the
+associated first-author paper published online in November 2026 as an Early Access
+article in *IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing*:
+[*Discrimination of Arctic Sea Ice Types From L- and S-Band Fully Polarimetric
+UAVSAR: A NISAR Baseline Study*](https://doi.org/10.1109/JSTARS.2026.3754265).
 
 This public repository does **not** redistribute:
 
@@ -462,7 +464,7 @@ needed to document the exploratory radiative-transfer analysis are included.
 
 The SMRT forward-modelling, reachability, sensitivity, identifiability, and
 constrained-inversion experiments presented here are subsequent exploratory analyses
-and should not be interpreted as results of the associated manuscript unless explicitly stated.
+and should not be interpreted as results of the associated published paper unless explicitly stated.
 
 Before reuse or redistribution of the underlying SAR-derived observations or results,
 appropriate data ownership, collaboration, and publication considerations should be respected.
@@ -513,7 +515,16 @@ The defensible conclusion is narrower:
 
 ---
 
-## Reference
+## References
+
+### Related MSc research
+
+Mahboob, M., Mahmud, M., Nandan, V., Howell, S.E.L., Brady, M., Cabaj, A., & Dewan, A. (2026).  
+*Discrimination of Arctic Sea Ice Types From L- and S-Band Fully Polarimetric UAVSAR: A NISAR Baseline Study.*  
+**IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing** (Early Access).  
+https://doi.org/10.1109/JSTARS.2026.3754265
+
+### Radiative-transfer model
 
 Picard, G., Sandells, M., & Löwe, H. (2018).  
 *SMRT: An active-passive microwave radiative transfer model for snow with multiple microstructure and scattering formulations.*  
